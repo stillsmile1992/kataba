@@ -12,8 +12,7 @@ public class StrUtil {
     /**
      * 检验是否为空
      */
-
-    public static boolean checkNotEmpty(String... strings){
+    public static boolean checkNotEmpty(String... strings) {
         boolean flag = true;
         for (String string : strings) {
             if (string == null) {

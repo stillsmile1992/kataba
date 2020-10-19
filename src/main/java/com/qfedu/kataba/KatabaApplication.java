@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@MapperScan(basePackages ="com/qfedu/kataba/dao")
+@MapperScan(basePackages = "com/qfedu/kataba/dao")
 @EnableTransactionManagement
 public class KatabaApplication {
 
