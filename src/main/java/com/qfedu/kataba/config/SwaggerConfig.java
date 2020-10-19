@@ -21,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    private ApiInfo createAI() {
+    private ApiInfo createApiInfo() {
         return new ApiInfoBuilder().title("片场项目的在线接口文档").
                 contact(new Contact("Java2004", "http://baidu.com", "java2004@163.com"))
                 .version("0.1").description("这是一个在线接口文档，可以直接查看接口的信息并且可以实现接口的测试")
@@ -29,9 +29,9 @@ public class SwaggerConfig {
     }
 
     @Bean
-    public Docket createD() {
+    public Docket createDocket() {
         return new Docket(DocumentationType.SWAGGER_2).
-                apiInfo(createAI())
+                apiInfo(createApiInfo())
                 .select().apis(RequestHandlerSelectors.basePackage("com.qfedu.kataba.controller")).
                         build();
     }
