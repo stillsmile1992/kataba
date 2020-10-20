@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -16,6 +17,7 @@ import java.util.Date;
  */
 @Data
 @TableName("t_userlog")
+@NoArgsConstructor
 public class UserLog {
     @TableId(type = IdType.AUTO)
     private Integer id;
@@ -23,4 +25,11 @@ public class UserLog {
     private Integer type;
     private String content;
     private Date ctime;
+
+    public UserLog(Integer uid, Integer type, String content, Date ctime) {
+        this.uid = uid;
+        this.type = type;
+        this.content = content;
+        this.ctime = ctime;
+    }
 }

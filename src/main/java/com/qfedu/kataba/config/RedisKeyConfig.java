@@ -18,4 +18,19 @@ public class RedisKeyConfig {
      * 验证码有效期
      */
     public static final int RCODE_TIME = 600;
+
+    /**
+     * 存储令牌
+     */
+    public static final String LOGIN_TOKEN = "kataba:login:token:";
+
+    /**
+     * 存储登录id
+     */
+    public static final String LOGIN_USER = "kataba:login:uid:";
+
+    /**
+     * 存储登录时间
+     */
+    public static final int LOGIN_TIME = 1800;
 }
