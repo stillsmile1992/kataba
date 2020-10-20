@@ -97,6 +97,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public Result login(UserLoginDto userLoginDto) {
         //1.检验
         User user = userDao.selectByName(userLoginDto.getName());
@@ -111,7 +112,10 @@ public class UserServiceImpl implements UserService {
                 JedisUtil.getInstance().STRINGS.setEx(RedisKeyConfig.LOGIN_TOKEN + token, RedisKeyConfig.LOGIN_TIME, new JSONObject(user).toString());
                 //记录登录过的账号信息
                 JedisUtil.getInstance().STRINGS.setEx(RedisKeyConfig.LOGIN_USER + user.getId(), RedisKeyConfig.LOGIN_TIME, token);
-                //5.返回
+                //5.加入日志
+                UserLog userLog = new UserLog(user.getId(), 2, "用户登录", new Date());
+                userLogDao.insert(userLog);
+                //6.返回
                 return Result.ok(token);
             }
         }

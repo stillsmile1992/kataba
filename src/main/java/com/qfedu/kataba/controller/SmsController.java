@@ -1,12 +1,10 @@
 package com.qfedu.kataba.controller;
 
+import com.qfedu.kataba.dto.SmsRCodeDto;
 import com.qfedu.kataba.service.intf.SmsLogService;
 import com.qfedu.kataba.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @project kataba
@@ -23,7 +21,12 @@ public class SmsController {
     private SmsLogService smsLogService;
 
     @PostMapping("/sendrcode/{phone}")
-    public Result sendRCode (@PathVariable String phone){
+    public Result sendRCode(@PathVariable String phone) {
         return smsLogService.sendRCode(phone);
+    }
+
+    @PostMapping("/checkrcode")
+    public Result checkRCode(@RequestBody SmsRCodeDto smsRCodeDto) {
+        return smsLogService.checkRCode(smsRCodeDto);
     }
 }
