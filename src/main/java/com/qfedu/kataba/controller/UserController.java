@@ -4,10 +4,7 @@ import com.qfedu.kataba.dto.UserLoginDto;
 import com.qfedu.kataba.service.intf.UserService;
 import com.qfedu.kataba.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author 徐天麒
@@ -28,7 +25,7 @@ public class UserController {
         return userService.all();
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public Result login(@RequestBody UserLoginDto userLoginDto) {
         return userService.login(userLoginDto);
     }
